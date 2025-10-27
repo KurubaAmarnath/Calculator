@@ -1,0 +1,86 @@
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.display {
+  width: 300px;
+  height: 80px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  text-align: right;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.square,
+.square1,
+.square2,
+.square3,
+.square4,
+.square5,
+.square6,
+.square7,
+.square8,
+.square9,
+.square10,
+.square11,
+.square12,
+.square13,
+.square14,
+.square15,
+.square16,
+.square17,
+.square18,
+.square19 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.square,
+.square1,
+.square2,
+.square4,
+.square5,
+.square6,
+.square8,
+.square9,
+.square10,
+.square12,
+.square13,
+.square14,
+.square16,
+.square17,
+.square18 {
+  background-color: white;
+  color: black;
+}
+
+.square3,
+.square7,
+.square11,
+.square15,
+.square19 {
+  background-color: #ff9500;
+  color: white;
+}
