@@ -1,0 +1,145 @@
+10.27 6:50 PM
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .display {
+      width: 300px;
+      height: 80px;
+      background-color: black;
+      color: white;
+      font-size: 32px;
+      text-align: right;
+      padding: 10px;
+      border: 2px solid white;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .square, .square1, .square2, .square3, .square4, .square5, .square6,
+    .square7, .square8, .square9, .square10, .square11, .square12,
+    .square13, .square14, .square15, .square16, .square17, .square18, .square19 {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .square, .square1, .square2, .square4, .square5, .square6,
+    .square8, .square9, .square10, .square12, .square13, .square14,
+    .square16, .square17, .square18 {
+      background-color: white;
+      color: black;
+    }
+
+    .square3, .square7, .square11, .square15, .square19 {
+      background-color: #FF9500;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="display" id="display">0</div>
+
+  <div class="row">
+    <div class="square" data-value="AC">AC</div>
+    <div class="square1" data-value="()">()</div>
+    <div class="square2" data-value="%">%</div>
+    <div class="square3" data-value="/">÷</div>
+  </div>
+
+  <div class="row">
+    <div class="square4" data-value="7">7</div>
+    <div class="square5" data-value="8">8</div>
+    <div class="square6" data-value="9">9</div>
+    <div class="square7" data-value="*">×</div>
+  </div>
+
+  <div class="row">
+    <div class="square8" data-value="4">4</div>
+    <div class="square9" data-value="5">5</div>
+    <div class="square10" data-value="6">6</div>
+    <div class="square11" data-value="-">-</div>
+  </div>
+
+  <div class="row">
+    <div class="square12" data-value="1">1</div>
+    <div class="square13" data-value="2">2</div>
+    <div class="square14" data-value="3">3</div>
+    <div class="square15" data-value="+">+</div>
+  </div>
+
+  <div class="row">
+    <div class="square16" data-value="0">0</div>
+    <div class="square17" data-value=".">.</div>
+    <div class="square18" data-value="clear">←</div>
+    <div class="square19" data-value="=">=</div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('[data-value]');
+    let currentInput = "";
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.getAttribute('data-value');
+
+        if (value === "AC") {
+          // Clear all
+          currentInput = "";
+          display.textContent = "0";
+        } 
+        else if (value === "clear") {
+          // Delete last character
+          currentInput = currentInput.slice(0, -1);
+          display.textContent = currentInput || "0";
+        } 
+        else if (value === "=") {
+          // Evaluate expression
+          try {
+            let result = eval(currentInput);
+            display.textContent = result;
+            currentInput = result.toString();
+          } catch {
+            display.textContent = "Error";
+            currentInput = "";
+          }
+        } 
+        else {
+          // Add pressed value to current input
+          if (value === "÷") currentInput += "/";
+          else if (value === "×") currentInput += "*";
+          else currentInput += value;
+          
+          display.textContent = currentInput;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
